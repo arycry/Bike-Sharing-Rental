@@ -49,8 +49,8 @@ def counting_df(day_df):
     return count_df
     
 #Membaca data dari file csv
-day_df = pd.read_csv("dashboard/day_df.csv")
-hour_df = pd.read_csv("dashboard/hour_df.csv")
+day_df = pd.read_csv("day_df.csv")
+hour_df = pd.read_csv("hour_df.csv")
 
 #Membuat filter untuk sidebar
 datetime_columns = ["dteday"]
@@ -140,7 +140,7 @@ sns.barplot(
     palette=["#D3D3D3", "#D3D3D3", "#D3D3D3", "#90CAF9", "#D3D3D3"], 
     ax=ax[1])
 ax[1].set_ylabel(None)
-ax[1].set_xlabel("Jam", fontsize=30)
+ax[1].set_xlabel("Hours (PM)", fontsize=30)
 ax[1].set_title("Jam berdasarkan penyewa sepeda tersedikit", loc="center", fontsize=35)
 ax[1].tick_params(axis='y', labelsize=35)
 ax[1].tick_params(axis='x', labelsize=30)
@@ -184,11 +184,11 @@ data = [total_casual, total_registered]
 labels = ['Casual', 'Registered']
 
 # Membuat pie plot
-plt.figure(figsize=(3, 3))
-plt.pie(data, labels=labels, autopct='%1.1f%%', colors=["#D3D3D3", "#72BCD4"])
-plt.title('Distribusi usual dan registered')
+fig, ax = plt.subplots(figsize=(3, 3))
+ax.pie(data, labels=labels, autopct='%1.1f%%', colors=["#D3D3D3", "#72BCD4"])
+ax.set_title('Distribusi usual dan registered')
 
-st.pyplot()
+st.pyplot(fig)
 
 st.subheader("Perbandingan sewa sepeda pada hari kerja dan hari libur")
 
@@ -196,24 +196,24 @@ st.subheader("Perbandingan sewa sepeda pada hari kerja dan hari libur")
 labels = weekdays_df['status_day']
 sizes = weekdays_df['count']
 
-plt.figure(figsize=(3, 3))
-plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90, colors=["#D3D3D3", "#72BCD4"])
-plt.title('Distribusi Status Day')
-st.pyplot()
+fig, ax = plt.subplots(figsize=(3, 3))
+ax.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90, colors=["#D3D3D3", "#72BCD4"])
+ax.set_title('Distribusi Status Day')
+st.pyplot(fig)
 
 st.subheader("Performa sewa sepeda pada 2011-2012")
 
 #membuat figure dengan ukuran (30, 10)
-plt.figure(figsize=(30, 10))
+fig, ax = plt.subplots(figsize=(30, 10))
 #Membuat line plot untuk total pelanggan per hari
-plt.plot(
+ax.plot(
     day_df["dteday"],
     day_df["count"],
     linewidth=2,
     color="#72BCD4"
 )
 #Mengatur judul dan label pada linechart
-plt.title("Total sewa sepeda per bulan(2011-2012)", loc="center", fontsize=40)
-plt.xticks(fontsize=15)
-plt.yticks(fontsize=15)
-st.pyplot()
+ax.set_title("Total sewa sepeda per bulan(2011-2012)", loc="center", fontsize=40)
+ax.tick_params(axis='x', labelsize=15)
+ax.tick_params(axis='y', labelsize=15)
+st.pyplot(fig)
