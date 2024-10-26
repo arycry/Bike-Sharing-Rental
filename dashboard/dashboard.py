@@ -188,8 +188,6 @@ plt.figure(figsize=(3, 3))
 plt.pie(data, labels=labels, autopct='%1.1f%%', colors=["#D3D3D3", "#72BCD4"])
 plt.title('Distribusi usual dan registered')
 
-st.set_option('deprecation.showPyplotGlobalUse', False)
-
 st.pyplot()
 
 st.subheader("Perbandingan sewa sepeda pada hari kerja dan hari libur")
