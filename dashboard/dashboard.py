@@ -49,8 +49,8 @@ def counting_df(day_df):
     return count_df
     
 #Membaca data dari file csv
-day_df = pd.read_csv("day_df.csv")
-hour_df = pd.read_csv("hour_df.csv")
+day_df = pd.read_csv("dashboard/day_df.csv")
+hour_df = pd.read_csv("dashboard/hour_df.csv")
 
 #Membuat filter untuk sidebar
 datetime_columns = ["dteday"]
