@@ -18,3 +18,7 @@ Masuk ke direktori lokal
 cd dashboard
 streamlit run dashboard.py
 ```
+atau melalui link berikut
+```
+https://bike-sharing-rental-3ehmpse9g4k35uncguecu6.streamlit.app/
+```
